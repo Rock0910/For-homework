@@ -10,7 +10,12 @@ def set(x,y,z):
 def get(x,y):
     print(number_list[x][y])
 print("\n定義成功!")
-print("自動使用set函數 設定9個數字")
+print("\n\n定義dump()")
+def dump():
+    print("\n",number_list[0],"\n",number_list[1],"\n",number_list[2],"\n")
+    return "dump()完成"
+print("\ndump()定義完成")
+print("\n\n自動使用set函數 設定9個數字")
 i,o,p=0,0,0
 while p < 9:
     p+=1
@@ -35,16 +40,15 @@ while e < p:
             break
 print("-----------------------------------")
 print("get結束")
+print("\n使用dump()")      
+print("-----------------------------------")
+print(dump())
+print("-----------------------------------")
+print("\n執行結束")
 print("\n由於函數內容無法自動顯示 所以使用print列出函數內容")
 print("以下為 ```print(number_list)```的執行結果\n")
 print("-----------------------------------")
 print(number_list)
-print("-----------------------------------")
-print("\n執行結束")
-print("\n\n抱歉 這邊的dump()我不太懂意思 所以我還是用print出來看看\n")
-print('以下為 ```print(number_list[0],換行,number_list[1],換行,number_list[2])``` 的執行結果\n')
-print("-----------------------------------")
-print(number_list[0],"\n",number_list[1],"\n",number_list[2])
 print("-----------------------------------")
 print("\n執行結束")
 print("\n\n不確定自己是否有了解老師題目 希望老師在之後可以給個範例解答 也因為看自己程式碼很爛\n")
