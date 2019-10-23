@@ -38,3 +38,10 @@ class Stack:
 if __name__ == "__main__":
     storage = Stack(50)
     storage.cal()
+
+
+"""
+((5*3+4/2)*5)-7+5
+53*42/+5*7-5+
+= 83
+"""
