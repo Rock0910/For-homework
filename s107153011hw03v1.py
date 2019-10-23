@@ -18,17 +18,19 @@ class Stack:
         
         for _ in store:
             if _ == "+":
-                self.push(int(self.pop())+int(self.pop()))                
-                #eval(f"int(self.pop()),"+",int(self.pop())")
+                self.push(float(self.pop())+float(self.pop()))
             elif _ == "-":
-                self.push(int(self.pop())-int(self.pop()))
-                #eval(int(self.pop()),"-",int(self.pop()))
+                cache = Stack(2)
+                cache.push(self.pop())
+                cache.push(self.pop())
+                self.push(float(cache.pop())-float(cache.pop()))
             elif _ == "*":
-                self.push(int(self.pop())*int(self.pop()))
-                #eval(int(self.pop()),"*",int(self.pop()))
+                self.push(float(self.pop())*float(self.pop()))              
             elif _ == "/":
-                self.push(int(self.pop())/int(self.pop()))
-                #eval(int(self.pop()),"/",int(self.pop()))
+                cache = Stack(2)
+                cache.push(self.pop())
+                cache.push(self.pop())
+                self.push(float(cache.pop())/float(cache.pop()))                
             else:
                 self.push(_)
         print(self.pop())
