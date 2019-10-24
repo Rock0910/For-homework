@@ -35,10 +35,16 @@ class Stack:
                 self.push(_)
         print(self.pop())
 
+
+
 if __name__ == "__main__":
     storage = Stack(50)
-    storage.cal()
-
+    re = "Y"
+    
+    while re == "Y" or re == "y":
+        print("\nTip:若手邊沒有正確的後置表示式 可以試試看 53*42/+5*7-5+ 等同於 ((5*3+4/2)*5)-7+5 = 83 ")
+        storage.cal()
+        re = input("是否再次計算?(Y/N):")
 
 """
 ((5*3+4/2)*5)-7+5
