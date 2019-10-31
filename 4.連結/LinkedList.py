@@ -1,6 +1,36 @@
+class Node:
+    def __init__(self, data = None):
+        #若不輸入資料 則存為 None
+        self.data = data
+        self.next = None
+        
+    def addNode(self,data):
+        new_node = Node(data)
+        self.next = data
+        return new_node
+    
+    def removeNode(self):
+        self.next = None
+
+#--------------------------------------
+init = Node()
+node1 = init.addNode(1)
+node2 = node1.addNode(2)
+node3 = node2.addNode(3)
+node4 = node3.addNode(4)
+
+print(init.next,node1.next,node2.next,node3.next,node4.next)
+
+node1.removeNode()
+
+print(init.next,node1.next)
+
 print("107153011 陳鍇翰 腦袋燒壞了\n看題目以為只設 Node 一個類別 不過翻到前面有提到 head tail\
 \n而且在呼叫出內容時可能會亂 所以參考網路上的解說+實作 並自己解釋\
-\n實作上跟想的概念差挺多的 老師的參考解答也讀讀看不知道能不能清楚一些\n\n")
+\n實作上跟想的概念差挺多的 老師的參考解答也讀讀看不知道能不能清楚一些\n\n\
+\n下方程式碼是參考網路 自行理解加上註解 但還是不會從零開始做")
+
+"""
 class Node:
     def __init__(self, data = None):
         #這樣可以讓data沒填入資料時設定該值為 None
@@ -70,3 +100,4 @@ test.show()
 print("\n\n我覺得還是看老師的範例跟講解來思考好了 這個就是看別人怎麼定義來解釋而已")
 for x in range(5):
     print("我還是不會 這是參考網路程式碼自己註解而已")
+"""
