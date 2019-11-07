@@ -84,6 +84,5 @@ if __name__ == "__main__":
     print("在 1 後面插入 x")
     head.insert("1","x")
     dump(head)
-    
-    
-    
+
+    print("\n\n函數定義換成用到有next跟prev 不過好像有點多餘的樣子")
