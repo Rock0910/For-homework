@@ -1,3 +1,4 @@
+print("107153011陳鍇翰作業doubly")
 class doubly():
     def __init__(self,data):
         self.data = data
@@ -18,13 +19,10 @@ class doubly():
         while cur:
             if cur.data == char:
                 if cur.next:
-                    nxt = cur.next
-                    prev = cur.prev
-                    prev.next = nxt
-                    nxt.prev = prev
-                    cur.next = None
-                    cur.prev = None
-                    cur = None
+                    nxt = cur.next #先把next存好
+                    prev = cur.prev #也存prev
+                    prev.next = nxt #把上一個的next 改成 nxt
+                    nxt.prev = prev #把下一個的prev 改成 prev
                     return
             cur = cur.next
             
@@ -63,14 +61,6 @@ def dump(linked):
     cur = linked
     while cur:
         print(f"-> {cur.data}",end = "")
-        cur = cur.next
-
-def rdump(linked):
-    cur = linked.next
-    
-    while cur.prev:        
-        print(f"-> {cur.prev.data}",end = "")
-        print(cur.data,end = "")
         cur = cur.next
        
 #-----------------------------------------
