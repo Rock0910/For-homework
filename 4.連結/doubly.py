@@ -14,14 +14,27 @@ class doubly():
         
     def remove(self,char):
         cur = self
+        
+        while cur:
+            if cur.data == char:
+                if cur.next:
+                    nxt = cur.next
+                    prev = cur.prev
+                    prev.next = nxt
+                    nxt.prev = prev
+                    cur.next = None
+                    cur.prev = None
+                    cur = None
+                    return
+            cur = cur.next
+            
+        """        
         while cur.next and cur.next.data != char:
             cur = cur.next
 
         if cur.next:
             cur.next = cur.next.next
-            
-        #if cur.prev.data == char:
-         #   cur.prev = cur.prev.prev
+        """    
             
             
     def insert(self,behind,insert):
@@ -31,12 +44,19 @@ class doubly():
                 self.append(doubly(insert))
             elif cur.data == behind:
                 new_node = doubly(insert)
+                #先建立新的Node
                 nxt = cur.next
+                #為了要讓新的Node能連上將要移除的next先存
                 cur.next = new_node
+                #將cur的next設定成剛建立的node
                 new_node.next = nxt
                 new_node.prev = cur
+                #把new_node的next跟prev都設定好
+                
                 nxt.prev = new_node
+                #再把new_node下一個的prev指向自己
             cur = cur.next
+            #要是cur不符合上面敘述 指針移動
             
     
 def dump(linked):
