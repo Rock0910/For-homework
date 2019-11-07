@@ -16,18 +16,28 @@ class doubly():
         cur = self
         while cur.next and cur.next.data != char:
             cur = cur.next
-        else:
-            cur.next.prev = cur.prev
-            
+
         if cur.next:
             cur.next = cur.next.next
             
-"""
-移除一個Node
-找到Node
-將Node的next拿去覆蓋上一個的next
-把新導向的prev改成Node 的上一個
-"""
+        #if cur.prev.data == char:
+         #   cur.prev = cur.prev.prev
+            
+            
+    def insert(self,behind,insert):
+        cur = self
+        while cur:
+            if cur.next is None and cur.data == behind:
+                self.append(doubly(insert))
+            elif cur.data == behind:
+                new_node = doubly(insert)
+                nxt = cur.next
+                cur.next = new_node
+                new_node.next = nxt
+                new_node.prev = cur
+                nxt.prev = new_node
+            cur = cur.next
+            
     
 def dump(linked):
     cur = linked
@@ -45,7 +55,7 @@ def rdump(linked):
        
 #-----------------------------------------
 if __name__ == "__main__":
-    text = "Braindamaged"
+    text = "123456789"
     head = doubly(text[0])
     
     for i in text[1:]:
@@ -55,12 +65,15 @@ if __name__ == "__main__":
     print()
     print()
     
-    print("移除 r ")
-    head.remove("r")
+    print("移除 5 ")
+    head.remove("5")
     dump(head)
     print()
     print()
-    rdump(head)
+    
+    print("在 1 後面插入 x")
+    head.insert("1","x")
+    dump(head)
     
     
     
