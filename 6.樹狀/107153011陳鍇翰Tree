@@ -1,1 +1,66 @@
-Preserve
+print("107153011陳鍇翰 樹狀圖")
+class Node:
+    def __init__(self,data):
+        self._children = [None for _  in range(3)]
+        self._parent = None
+        self._data = data
+
+class Tree:
+    def __init__(self,i):
+        self._content = Node(i)
+        #self._root = self
+        
+    def root(self):
+        #print(self._root)
+        buf = self
+        while buf._parent:
+            buf = buf._parent
+        print(buf)
+        
+    def addChild(self,parent,child):
+        #python有自己的[].append()功能 在想會不會那樣簡單很多
+        #但好像會多吃很多資源
+        i = 0
+        while parent._children[i]:
+            i += 1
+        if not parent._children[i]:
+            parent._children[i] = Node("child")
+            parent._children[i]._parent = parent
+        else:
+            print("子節點數量已達上限")
+    
+    def cut(self,t):
+        cur = t._parent
+        i = 0
+        while cur._children[i] != t:
+            i += 1
+        if cur._children[i] == t:
+            cur._children[i] = None
+        t = Tree(t)
+        
+    def paste(self,n,t):
+        cur = self
+        while cur._content._children != n:
+            cur._content = cur._content._children
+        if cur._content._children == n:
+            cur._content._children._children = t
+#----------------------------------------------------------
+print("尚未完成 必須要從樹的頂端往下讀取\n\
+      但是當children有超過兩個的時候要怎麼檢查\n\
+      目前還沒實作 也知道自己用_content意義不明\n\
+      反而BUG更多了 目前無法跑")
+print("先打出自己想的吧\
+       \n我打算都將這些函式寫在Tree類別裡面\n\n\
+       root():        \n\
+         while self._parent:        \n\
+           self = self._parent        \n\
+       print(self)        \n\n似乎要多加上資料 不然好像不知道怎樣檢查 可能放個data格")
+print("addChild(p,n):        \n\
+          從Tree最上層開始檢查child 要是不是p 就進去繼續找\n\
+        找到之後在children新增n節點並替這個節點新增parent為上層")
+print("cut(t):     \n\
+          從最上層開始往下找 找到t之後新增一個Tree將t當作root\n\
+        然後再將t從原本Tree裡面的children移除")
+print("paste(n,t):    \n\
+          從最上面往下找到n之後將其children新增一個新的child t就好")
+print("但是很抽象 預定是要補完這程式碼 將這些字全都用成註解在最後面\n或許加個version 1想法吧")
