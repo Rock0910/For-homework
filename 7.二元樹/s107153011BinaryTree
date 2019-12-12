@@ -32,7 +32,7 @@ class BinaryTree:
         self.root = i
         
     def root(self):
-        print(self.root)
+        return self.root.data
         
     def addChild(self,parent,child):
         cur = self.root
@@ -116,3 +116,7 @@ if __name__ == "__main__":
     a = Node("a")
     Test = BinaryTree(a)
     Test.root
+    
+    Test.addChild(a,"b")
+    Test.addChild(a,"c")
+    Test.addChild(a,"d")
