@@ -1,1 +1,118 @@
-二元樹
+print("107153011陳鍇翰 二元樹")
+class Node:
+    def __init__(self,data):
+        self.left = None
+        self.right = None
+        self.parent = None
+        self.data = data
+
+class queue:
+    def __init__(self,size):
+        self._data = [None for _ in range(size)]
+        self._head = -1
+        self._tail = 0
+    
+    def dequeue(self):
+        if self._head +1 % len(self._data) == self._tail % len(self._data):
+            print("佇列已經空了")
+        else:
+            self._head += 1
+            return self._data[(self._head -1) % len(self._data)]
+            
+    def enqueue(self,target):
+        if self._tail % len(self._data) == self._head % len(self._data):
+            print("佇列已滿")
+        else:
+            self._data[self._tail % len(self._data)] = target
+            self._tail += 1
+            
+            
+class BinaryTree:
+    def __init__(self,i):
+        self.root = i
+        
+    def root(self):
+        print(self.root)
+        
+    def addChild(self,parent,child):
+        cur = self.root
+        list = queue(10)
+        list.enqueue(cur)
+        while list:
+            tar = list.dequeue()
+            
+            if tar == parent:
+                if not tar.left:
+                    cur = Node(f"child")
+                    tar.left = cur
+                    tar.left.parent = parent
+                elif not tar.right:
+                    cur = Node(f"child")
+                    tar.right = cur
+                    tar.right.parent = parent
+                else:
+                    print("子節點已滿 無法再加入")
+                break
+                
+            if tar.left:
+                list.enqueue(tar.left)
+            if tar.right:
+                list.enqueue(tar.right)
+        
+        print("完成")
+    def cut(self,t):
+        cur = self.root
+        list = queue(10)
+        list.enqueue(cur)
+        while list:
+            tar = list.dequeue()
+            
+            if tar.left == t:
+                tar.left.parent = None
+                t = BinaryTree(tar.left)
+                tar.left = None
+                break
+            
+            if tar.right == t:
+                tar.right.parent = None
+                t = BinaryTree(tar.right)
+                tar.right = None
+                break
+                    
+                
+            if tar.left:
+                list.enqueue(tar.left)
+            if tar.right:
+                list.enqueue(tar.right)
+        
+        print("完成")
+                
+    def paste(self,n,t):
+        cur = self.root
+        list = queue(10)
+        list.enqueue(cur)
+        while list:
+            tar = list.dequeue()
+            
+            if tar == n:
+                if not tar.left:
+                    tar.left = t
+                    tar.left.parent = n
+                elif not tar.right:
+                    tar.right = t
+                    tar.right.parent = n
+                else:
+                    print("子節點已滿 無法再加入")
+                break
+            
+            if tar.left:
+                list.enqueue(tar.left)
+            if tar.right:
+                list.enqueue(tar.right)
+                
+        print("完成")
+#--------------------------------------------------------
+if __name__ == "__main__":
+    a = Node("a")
+    Test = BinaryTree(a)
+    Test.root
